@@ -1,23 +1,4 @@
-# Dockerインストール（Mac用）
-下記、どっちか実行
-- brew install docker
-- arch -arm64 brew install docker
-
-- brew install docker-compose
-- arch -arm64 brew install docker-compose
-
-
-# Colimaインストール（Mac用）
-- brew install colima
-- arch -arm64 brew install colima
-
-
-# Colima起動
-- colima start
-- colima start --cpu 4 --memory 8　# メモリ指定バージョン
-
-
-# プロジェクトフォルダ構成
+# 0. プロジェクトフォルダ構成
 joinup/
 ├── README.md
 ├── docker-compose.yml          # Docker Compose設定
@@ -56,19 +37,42 @@ joinup/
         ├── communities.py
         └── matching.py
 
+# 1. Dockerインストール（Mac用）
+- brew install docker
+（実行失敗する場合：arch -arm64 brew install docker）
 
-# Docker操作
+- brew install docker-compose
+（実行失敗する場合：arch -arm64 brew install docker-compose）
+
+
+# 2. Colimaインストール（Mac用）
+- brew install colima
+（実行失敗する場合：arch -arm64 brew install colima）
+
+
+# Colima起動
+- colima start --cpu 4 --memory 8　# メモリ指定バージョン
+（メモリ未指定での実行：colima start）
+
+
+# 2. Docker操作
 ## アプリケーション起動
 docker-compose up -d
+（プロジェクトルートディレクトリに移動して実行）
 
-## ログ確認
-docker-compose logs -f [frontend|backend|db]
+## Webリンクにアクセスしてアプリケーション起動確認
+http://localhost:3000
 
 ## アプリケーション停止
 docker-compose down
 
 ## 完全リセット（ボリュームも削除）
 docker-compose down -v
+
+
+# Docker操作チートシート（おまけ）
+## ログ確認
+docker-compose logs -f [frontend|backend|db]
 
 ##  q 再ビルド
 docker-compose up --build -d
@@ -80,7 +84,7 @@ docker system prune -f
 docker-compose ps
 
 
-# API操作
+# API確認（おまけ）
 ## ヘルスチェック
 curl http://localhost:8000/health
 
@@ -94,7 +98,7 @@ curl http://localhost:8000/api/users/communities
 curl http://localhost:8000/api/communities/featured
 
 
-# データベース操作
+# データベース操作（おまけ）
 ## データベース接続
 docker-compose exec db psql -U joinup -d joinup_db
 
@@ -103,7 +107,3 @@ docker-compose exec db psql -U joinup -d joinup_db -c "\dt"
 
 ## サンプルデータ確認
 docker-compose exec db psql -U joinup -d joinup_db -c "SELECT * FROM users;"
-
-
-# Webリンク
-http://localhost:3000
