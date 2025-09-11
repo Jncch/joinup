@@ -37,6 +37,7 @@ joinup/
         ├── communities.py
         └── matching.py
 
+
 # 1. Dockerインストール（Mac用）
 - brew install docker
 （実行失敗する場合：arch -arm64 brew install docker）
@@ -48,7 +49,6 @@ joinup/
 # 2. Colimaインストール（Mac用）
 - brew install colima
 （実行失敗する場合：arch -arm64 brew install colima）
-
 
 # Colima起動
 - colima start --cpu 4 --memory 8　# メモリ指定バージョン
