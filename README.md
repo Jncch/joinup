@@ -42,10 +42,6 @@ joinup/
 - brew install docker
 （実行失敗する場合：arch -arm64 brew install docker）
 
-- brew install docker-compose
-（実行失敗する場合：arch -arm64 brew install docker-compose）
-
-
 # 2. Colimaインストール（Mac用）
 - brew install colima
 （実行失敗する場合：arch -arm64 brew install colima）
@@ -57,31 +53,31 @@ joinup/
 
 # 2. Docker操作
 ## アプリケーション起動
-docker-compose up -d
+docker compose up -d
 （プロジェクトルートディレクトリに移動して実行）
 
 ## Webリンクにアクセスしてアプリケーション起動確認
 http://localhost:3000
 
 ## アプリケーション停止
-docker-compose down
+docker compose down
 
 ## 完全リセット（ボリュームも削除）
-docker-compose down -v
+docker compose down -v
 
 
 # Docker操作チートシート（おまけ）
 ## ログ確認
-docker-compose logs -f [frontend|backend|db]
+docker compose logs -f [frontend|backend|db]
 
 ##  q 再ビルド
-docker-compose up --build -d
+docker compose up --build -d
 
 ## キャッシュクリア
 docker system prune -f
 
 ## 実行確認
-docker-compose ps
+docker compose ps
 
 
 # API確認（おまけ）
@@ -100,10 +96,10 @@ curl http://localhost:8000/api/communities/featured
 
 # データベース操作（おまけ）
 ## データベース接続
-docker-compose exec db psql -U joinup -d joinup_db
+docker compose exec db psql -U joinup -d joinup_db
 
 ## テーブル確認
-docker-compose exec db psql -U joinup -d joinup_db -c "\dt"
+docker compose exec db psql -U joinup -d joinup_db -c "\dt"
 
 ## サンプルデータ確認
-docker-compose exec db psql -U joinup -d joinup_db -c "SELECT * FROM users;"
+docker compose exec db psql -U joinup -d joinup_db -c "SELECT * FROM users;"
